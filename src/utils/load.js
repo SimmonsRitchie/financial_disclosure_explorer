@@ -1,9 +1,9 @@
-import { csv } from "d3-fetch";
-import SURVEY from "~/data/dummy-data.csv";
+import { json } from "d3-fetch";
+import {DATA} from "~/data/dummy-data.js";
 
 export const loadData = () => {
   /* Fetch and parse files.*/
   return Promise.all([
-    csv(SURVEY),
+    DATA,
   ])
 };

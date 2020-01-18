@@ -2,8 +2,10 @@ import React from "react";
 import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
+import SearchBar from "./SearchBar"
 
 import {pymSendHeight} from '../utils/handlePym'
+import SearchResults from "./SearchResults";
 
 class Main extends React.Component {
 
@@ -22,10 +24,12 @@ class Main extends React.Component {
 
   render() {
     return (
-        <div >
+        <div className="container">
           <Header />
-          <Body>
-          </Body>
+            <Body>
+              <SearchBar />
+              <SearchResults />
+            </Body>
           <Footer />
         </div>
     );
