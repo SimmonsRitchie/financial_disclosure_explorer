@@ -22,14 +22,12 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div className="container__outer">
-        <div className="container__inner">
+        <div >
           <Header />
           <Body>
           </Body>
           <Footer />
         </div>
-      </div>
     );
   }
 }
