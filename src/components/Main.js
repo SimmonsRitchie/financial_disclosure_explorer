@@ -4,7 +4,8 @@ import Body from "./Body";
 import Footer from "./Footer";
 import SearchBar from "./SearchBar"
 import SearchResults from "./SearchResults";
-import { useCounterContext } from "../context/CounterContext"
+// import { useCounterContext } from "../context/CounterContext"
+import { useSearchContext } from "../context/searchContext"
 import CounterDisplay from "./CounterDisplay";
 import CounterButtons from "./CounterButtons";
 
@@ -12,18 +13,18 @@ class Main extends React.Component {
 
   render() {
     return (
-        <useCounterContext.Provider>
           <div className="container">
+          <useSearchContext.Provider>
+
             <Header />
               <Body>
                 <SearchBar />
                 <SearchResults />
-                <CounterDisplay />
-                <CounterButtons />
               </Body>
             <Footer />
+            </useSearchContext.Provider>
+
           </div>
-        </useCounterContext.Provider>
     );
   }
 }

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { useSearchContext } from "../context/SearchContext"
 
-class SearchResults extends Component {
-  render() {
-    return (
-      <div className="container">
-        
-      </div>
-    );
-  }
-}
+const SearchResults = () => {
+  // const { text } = useSearchContext();
+
+  return (
+    <div className="container">
+    </div>
+  );
+};
 
 export default SearchResults;
+
+

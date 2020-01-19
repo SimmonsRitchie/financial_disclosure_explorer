@@ -7,7 +7,7 @@ const CounterButtons = () => {
   return (
     <div>
       <button onClick={increment}>ADD</button>
-      <button onClick={decrement}>SUBTRACT</button>
+      <button onClick={() => decrement('huh?')}>SUBTRACT</button>
     </div>
   );
 };
