@@ -10,7 +10,7 @@ const fakeData = (num) => {
   "q01_first_name": faker.name.firstName(),
   "q01_last_name": faker.name.lastName(),
   "q01_middle_initial": faker.name.firstName()[0],
-  "q01_suffix":faker.name.suffix,
+  "q01_suffix":faker.name.suffix(),
   "meta_filing_year": _.sample(["2015","2016","2017","2018"]),
   "meta_pdf_path": BAKER    
 })
