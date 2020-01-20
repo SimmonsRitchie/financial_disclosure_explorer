@@ -19,11 +19,14 @@ const SearchResults = props => {
   const { searchText } = useContext(SearchContext);
   const filteredData = applySearchTerms(searchText, props.data);
   return (
-    <div className="container">
-      {filteredData.map((item, idx) => {
-        return <SearchResultsItem key={idx} item={item} />;
-      })}
-    </div>
+    <section>
+    <h2 className="subtitle">Showing <strong>{filteredData.length}</strong> forms</h2>
+      <div className="container">
+        {filteredData.map((item, idx) => {
+          return <SearchResultsItem key={idx} item={item} />;
+        })}
+      </div>
+    </section>
   );
 };
 
