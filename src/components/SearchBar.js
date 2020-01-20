@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import { SearchContext } from "../context/SearchContext"
 
 const SearchBar = () => {
+  const {addSearchText} = useContext(SearchContext)
   const [text, setText] = useState("")
+
+  const handleChange = (e) => {
+    setText(e.target.value)
+    addSearchText(e.target.value)
+  }
 
   return (
     <div className="container">
-    <form>
-      <input type="text" onChange={(e) => setText(e.target.value) } value={text}/>
-    </form>
+    <input type="text" onChange={handleChange} value={text}/>
     </div>
   );
 };
