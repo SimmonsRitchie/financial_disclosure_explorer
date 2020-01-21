@@ -1,13 +1,17 @@
 import React from "react";
 
 const SearchResultsItem = props => {
-  const { item } = props;
+  const { 
+    q01_first_name,
+    q01_middle_initial,
+    q01_last_name,
+    q04_public_position,
+    meta_filing_year,
+  } = props.item;
   return (
     <div className="box">
-      <div>
-        {item.q01_first_name} {item.q01_middle_initial} {item.q01_last_name}
-      </div>
-      <div>Filing year: {item.meta_filing_year}</div>
+      <h2 className="is-size-5"><strong>{q01_first_name} {q01_middle_initial}. {q01_last_name}</strong></h2>
+      <h3 className="is-size-6">Filing year: {meta_filing_year}, Filing as: {q04_public_position}</h3>
     </div>
   );
 };

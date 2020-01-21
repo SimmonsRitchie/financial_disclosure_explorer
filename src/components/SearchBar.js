@@ -11,11 +11,9 @@ const SearchBar = () => {
   }
 
   return (
-    <section>
-      <div className="container">
+      <div className="level">
         <input className="input" type="text" onChange={handleChange} value={text} placeholder={"Search for lawmaker, institution, or keyword"}/>
       </div>
-    </section>
   );
 };
 
