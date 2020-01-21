@@ -17,6 +17,4 @@ const SearchBar = () => {
   );
 };
 
-//<input type="text" onChange={setText} value={text}/>
-
 export default SearchBar
