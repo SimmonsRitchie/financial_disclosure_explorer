@@ -1,32 +1,27 @@
 import React, { useContext, useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
 import { SearchContext } from "../context/SearchContext";
 import SearchResultsItem from "./SearchResultsItem";
 import { applySearchTerms } from "../utils/search";
+import Pagination from 'rc-pagination';
+import 'rc-pagination/assets/index.css';
 
-const ITEMS_PER_PAGE = 10
+const ITEMS_PER_PAGE = 3
 
 const SearchResults = props => {
   // TODO: Fix pagination
   const { searchText } = useContext(SearchContext);
-  const [offset, setOffset] = useState(1)
-  useEffect(() => {
-    console.log('search text changed!')
-    console.log(maxPages)
-  },[searchText])
+  const [currentPage, setCurrentPage] = useState(1)
   const filteredData = applySearchTerms(searchText, props.data);
-  const maxPages = filteredData.length / ITEMS_PER_PAGE
-  const handlePageClick = data => {
-    console.log("selected page: " + data.selected)
-    setOffset(data.selected * ITEMS_PER_PAGE)
-  };
-  useEffect(() => {
-    console.log('search text changed!')
-    setOffset(0)
-  },[searchText])
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE
   const endOffset = offset + ITEMS_PER_PAGE
   const slicedData = filteredData.slice(offset, endOffset)
-
+  const onChange = (page) => {
+    console.log(page);
+    setCurrentPage(page)
+  }
+  useEffect(() => {
+    setCurrentPage(1)
+  },[searchText])
   return (
     <section>
       <h2 className="subtitle">
@@ -41,20 +36,7 @@ const SearchResults = props => {
           return <SearchResultsItem key={idx} item={item} />;
         })}
       </div>
-      <ReactPaginate
-        previousLabel={"previous"}
-        forcePage={offset + 1}
-        nextLabel={"next"}
-        breakLabel={"..."}
-        breakClassName={"break-me"}
-        pageCount={maxPages}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={3}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination"}
-        subContainerClassName={"pages pagination"}
-        activeClassName={"active"}
-      />
+      <Pagination onChange={onChange} pageSize={ITEMS_PER_PAGE} current={currentPage} total={filteredData.length} />
     </section>
   );
 };
