@@ -11,7 +11,7 @@ export const applySearchTerms = (searchText, searchData) => {
   Note: If a user types in the same search term 'sally sally sally' it will match with a megaSearchString of 'sally' because
   each chunk is searched independent of others.
   */
-  let cleanSearchText = searchText.trim().replace(/[^a-zA-Z\" ]/g, "");
+  let cleanSearchText = searchText.trim().replace(/[^a-zA-Z0-9\" ]/g, "");
   if (searchText === "") {
     return searchData;
   } else {
