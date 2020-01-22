@@ -1,22 +1,30 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { SearchContext } from "../context/SearchContext";
 import SearchResultsItem from "./SearchResultsItem";
 import { applySearchTerms } from "../utils/search";
 
-const ITEMS_PER_PAGE = 3
+const ITEMS_PER_PAGE = 10
 
 const SearchResults = props => {
   // TODO: Fix pagination
   const { searchText } = useContext(SearchContext);
-  const [currentPage, setCurrentPage] = useState(1)
+  const [offset, setOffset] = useState(1)
+  useEffect(() => {
+    console.log('search text changed!')
+    console.log(maxPages)
+  },[searchText])
   const filteredData = applySearchTerms(searchText, props.data);
   const maxPages = filteredData.length / ITEMS_PER_PAGE
   const handlePageClick = data => {
     console.log("selected page: " + data.selected)
     setOffset(data.selected * ITEMS_PER_PAGE)
   };
-  const endOffset = offset + ITEMS_PER_PAGE > filteredData.length ? offset + ITEMS_PER_PAGE : filteredData.length
+  useEffect(() => {
+    console.log('search text changed!')
+    setOffset(0)
+  },[searchText])
+  const endOffset = offset + ITEMS_PER_PAGE
   const slicedData = filteredData.slice(offset, endOffset)
 
   return (
@@ -35,12 +43,13 @@ const SearchResults = props => {
       </div>
       <ReactPaginate
         previousLabel={"previous"}
+        forcePage={offset + 1}
         nextLabel={"next"}
         breakLabel={"..."}
         breakClassName={"break-me"}
         pageCount={maxPages}
         marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={3}
         onPageChange={handlePageClick}
         containerClassName={"pagination"}
         subContainerClassName={"pages pagination"}

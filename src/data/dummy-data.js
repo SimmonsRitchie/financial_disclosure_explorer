@@ -20,4 +20,4 @@ const fakeData = (num) => {
   return data
 }
 
-export const DATA = fakeData(20)
+export const DATA = fakeData(70)
