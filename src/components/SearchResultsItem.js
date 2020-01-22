@@ -9,10 +9,10 @@ const SearchResultsItem = props => {
     meta_filing_year,
   } = props.item;
   return (
-    <div className="box">
-      <h2 className="is-size-5"><strong>{q01_first_name} {q01_middle_initial}. {q01_last_name}</strong></h2>
-      <h3 className="is-size-6">Filing year: {meta_filing_year}, Filing as: {q04_public_position}</h3>
-    </div>
+      <div className="box">
+        <h2 className="title is-size-5">{q01_first_name} {q01_middle_initial}. {q01_last_name}</h2>
+        <h3 className="subtitle is-size-6">Filing year: {meta_filing_year}, Filing as: {q04_public_position}</h3>
+      </div>
   );
 };
 

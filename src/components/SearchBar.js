@@ -12,7 +12,7 @@ const SearchBar = () => {
 
   return (
       <div className="level">
-        <input className="input" type="text" onChange={handleChange} value={text} placeholder={"Search for lawmaker, institution, or keyword"}/>
+        <input className="input is-rounded" type="text" onChange={handleChange} value={text} placeholder={"Search for lawmaker, institution, or keyword"}/>
       </div>
   );
 };
