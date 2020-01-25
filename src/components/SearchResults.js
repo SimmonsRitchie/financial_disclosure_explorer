@@ -4,17 +4,20 @@ import SearchResultsItem from "./SearchResultsItem";
 import { applySearchTerms } from "../utils/search";
 import Pagination from "rc-pagination";
 import "rc-pagination/assets/index.css";
+import { SearchResultsContext } from "../context/SearchResultsContext";
 
 const ITEMS_PER_PAGE = 10;
 
-const SearchResults = props => {
-  // TODO: Fix pagination
+const SearchResults = (props) => {
+  //get context + set state
   const { searchText } = useContext(SearchContext);
+  const { results } = useContext(SearchResultsContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const filteredData = applySearchTerms(searchText, props.data);
+
+  // handle pagination
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   const endOffset = offset + ITEMS_PER_PAGE;
-  const slicedData = filteredData.slice(offset, endOffset);
+  const slicedData = results.slice(offset, endOffset);
   const onChange = page => {
     setCurrentPage(page);
   };
@@ -27,7 +30,7 @@ const SearchResults = props => {
           <div className="content">
             <h2 className="is-size-6 has-text-centered">
               Displaying: <strong>{slicedData.length}</strong> of{" "}
-              <strong>{filteredData.length}</strong> results
+              <strong>{results.length}</strong> results
             </h2>
           </div>
         </div>
@@ -43,7 +46,7 @@ const SearchResults = props => {
           onChange={onChange}
           pageSize={ITEMS_PER_PAGE}
           current={currentPage}
-          total={filteredData.length}
+          total={results.length}
       />
         </div>
       </section>

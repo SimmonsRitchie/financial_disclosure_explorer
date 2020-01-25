@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import SearchContextProvider, { SearchContext } from "../context/SearchContext";
+import SearchResultsContextProvider from "../context/SearchResultsContext";
 
 class Main extends React.Component {
   render() {
@@ -12,10 +13,12 @@ class Main extends React.Component {
       <div className="container">
         <Header />
         <SearchContextProvider>
-          <Body>
-            <SearchBar />
-            <SearchResults data={this.props.data}/>
-          </Body>
+          <SearchResultsContextProvider data={this.props.data}>
+            <Body>
+              <SearchBar />
+              <SearchResults />
+            </Body>
+          </SearchResultsContextProvider>
         </SearchContextProvider>
         <Footer />
       </div>
