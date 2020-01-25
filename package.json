@@ -25,7 +25,8 @@
     "rc-pagination": "^1.20.12",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-spinners": "^0.6.1"
+    "react-spinners": "^0.6.1",
+    "react-tabs": "^3.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

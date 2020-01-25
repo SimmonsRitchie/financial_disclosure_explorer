@@ -34,7 +34,7 @@ const SearchResults = props => {
         </div>
       <div className="container">
         {slicedData.map((item, idx) => {
-          return <SearchResultsItem key={idx} item={item} />;
+          return <SearchResultsItem key={item.meta_id} item={item} />;
         })}
       </div>
       <section className="section">
