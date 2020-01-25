@@ -16,7 +16,6 @@ const SearchResults = props => {
   const endOffset = offset + ITEMS_PER_PAGE;
   const slicedData = filteredData.slice(offset, endOffset);
   const onChange = page => {
-    console.log(page);
     setCurrentPage(page);
   };
   useEffect(() => {
