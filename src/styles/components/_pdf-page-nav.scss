@@ -1,0 +1,15 @@
+.pdf-page-nav__container {
+  padding: $s-size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.pdf-page-nav__arrow {
+  padding: 0 $s-size 0 $s-size;
+  border: none;
+  background: none;
+  vertical-align: middle;
+}
+

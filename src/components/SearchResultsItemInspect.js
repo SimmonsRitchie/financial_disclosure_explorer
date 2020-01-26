@@ -9,7 +9,7 @@ const SearchResultsItemInspect = ({item}) => {
       <Tabs>
         <TabList>
           <Tab>Extracted text</Tab>
-          <Tab>Form</Tab>
+          <Tab>Document</Tab>
         </TabList>
 
       <TabPanel >
