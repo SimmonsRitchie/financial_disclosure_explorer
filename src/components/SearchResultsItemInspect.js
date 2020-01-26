@@ -9,7 +9,7 @@ const SearchResultsItemInspect = ({item}) => {
       <Tabs>
         <TabList>
           <Tab>Extracted text</Tab>
-          <Tab>PDF</Tab>
+          <Tab>Form</Tab>
         </TabList>
 
       <TabPanel >
@@ -17,7 +17,6 @@ const SearchResultsItemInspect = ({item}) => {
       </TabPanel>
 
       <TabPanel >
-        <h2>PDF view!</h2>
         <PdfViewer pdfPath={item.meta_pdf_path} />
       </TabPanel>
 
