@@ -14,7 +14,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="content has-text-centered">
         <p>
-          Pa. Financial Disclosure Explorer was produced by{" "}
+          <strong className="has-text-white">Pa. Financial Disclosure Explorer</strong> is a project of{" "}
           <a href={spotlightUrl}>Spotlight PA</a> and <a href={templeUrl}>Temple University</a>.
         </p>
       </div>
