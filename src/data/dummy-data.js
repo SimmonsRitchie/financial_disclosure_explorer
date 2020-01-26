@@ -15,7 +15,8 @@ const fakeData = (num) => {
   "q04_public_position": _.sample(["State Representative","State Senator"]),
   "meta_id": faker.random.uuid(),
   "meta_filing_year": _.sample(["2015","2016","2017","2018"]),
-  "meta_pdf_path": BAKER    
+  // "meta_pdf_path": _.sample([BAKER, COSTA])    
+  "meta_pdf_path": COSTA   
 })
   }
   return data

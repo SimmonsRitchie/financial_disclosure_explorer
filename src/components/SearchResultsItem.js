@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
 
-const SearchResultsItem = props => {
+const SearchResultsItem = (props) => {
   const { 
     q01_first_name,
     q01_middle_initial,
@@ -35,7 +35,7 @@ const SearchResultsItem = props => {
         </div>
         <div onClick={handleClick}>{expandText}</div>
       </div>
-        {expand && <SearchResultsItemInspect />}
+        {expand && <SearchResultsItemInspect item={props.item} />}
       </div>
   );
 };

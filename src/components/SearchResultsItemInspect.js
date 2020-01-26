@@ -1,8 +1,9 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import PdfViewer from "./PdfViewer";
 
-const SearchResultsItemInspect = () => {
+const SearchResultsItemInspect = ({item}) => {
   return (
     <div className="results-item-inspect__container">
       <Tabs>
@@ -17,6 +18,7 @@ const SearchResultsItemInspect = () => {
 
       <TabPanel >
         <h2>PDF view!</h2>
+        <PdfViewer pdfPath={item.meta_pdf_path} />
       </TabPanel>
 
       </Tabs>
