@@ -5,6 +5,7 @@ import { applySearchTerms } from "../utils/search";
 import Pagination from "rc-pagination";
 import "rc-pagination/assets/index.css";
 import { SearchResultsContext } from "../context/SearchResultsContext";
+import SearchResultsDetails from "./SearchResultsDetails";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -22,18 +23,12 @@ const SearchResults = (props) => {
     setCurrentPage(page);
   };
   useEffect(() => {
+    // Returns current page to page 1 if search results change
     setCurrentPage(1);
   }, [searchText]);
   return (
     <section>
-        <div className="level">
-          <div className="level-item">
-            <h2 className="is-size-6 has-text-centered">
-              Displaying: <strong>{slicedData.length}</strong> of{" "}
-              <strong>{results.length}</strong> results
-            </h2>
-          </div>
-        </div>
+      <SearchResultsDetails itemsOnPage={slicedData.length} totalItems={results.length}/>
       <div className="container">
         {slicedData.map((item, idx) => {
           return <SearchResultsItem key={item.meta_id} item={item} />;
