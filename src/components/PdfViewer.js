@@ -5,9 +5,11 @@ import { SizeMe } from "react-sizeme";
 const PdfViewer = ({ pdfPath }) => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const [loadSucess, setLoadSuccess] = useState(false);
 
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
+    setLoadSuccess(true);
   };
 
   const previousPage = () => setPageNumber(pageNumber - 1);
@@ -16,7 +18,15 @@ const PdfViewer = ({ pdfPath }) => {
   //TODO: Add React SizeMe to resize pdf
 
   return (
-    <div>
+    <div className="pdf-viewer__container">
+      {loadSucess && (
+        <PdfPageNav
+          pageNumber={pageNumber}
+          numPages={numPages}
+          previousPage={previousPage}
+          nextPage={nextPage}
+        />
+      )}
       <SizeMe
         monitorHeight
         refreshRate={128}
@@ -26,32 +36,44 @@ const PdfViewer = ({ pdfPath }) => {
             <Document
               file={pdfPath}
               onLoadSuccess={onDocumentLoadSuccess}
-              className="pdf-viewer__document"
             >
               <Page
-                className={"pdf-viewer__document"}
+              className={"pdf-viewer__document"}
                 pageNumber={pageNumber}
-                width={size.width}
+                width={size.width - 2}
               />
             </Document>
           </div>
         )}
       />
-      <div>
-        <p>
-          Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
-        </p>
-        <button type="button" disabled={pageNumber <= 1} onClick={previousPage}>
-          Previous
-        </button>
-        <button
-          type="button"
-          disabled={pageNumber >= numPages}
-          onClick={nextPage}
-        >
-          Next
-        </button>
-      </div>
+      {loadSucess && (
+        <PdfPageNav
+          pageNumber={pageNumber}
+          numPages={numPages}
+          previousPage={previousPage}
+          nextPage={nextPage}
+        />
+      )}
+    </div>
+  );
+};
+
+const PdfPageNav = ({ pageNumber, numPages, previousPage, nextPage }) => {
+  return (
+    <div className={"pdf-viewer__page-nav-container"}>
+      <button type="button" disabled={pageNumber <= 1} onClick={previousPage}>
+        Previous
+      </button>
+      <p>
+        Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
+      </p>
+      <button
+        type="button"
+        disabled={pageNumber >= numPages}
+        onClick={nextPage}
+      >
+        Next
+      </button>
     </div>
   );
 };
