@@ -1,10 +1,18 @@
-import React from 'react';
+import React from "react";
 
 const Header = () => (
-    <div className="block">
-      <h1 className="title is-2 has-text-centered	">Pa. Financial Disclosure Explorer</h1>
-      <h2 className="subtitle has-text-centered	">Examine the financial interests of Pennsylvania state lawmakers and cabinet officials.</h2>
+  <div className="header__container">
+    <div className="header__titles">
+      <h1 className="title is-2 has-text-centered	has-text-white">
+        Pa. Financial Disclosure Explorer
+      </h1>
+      <h2 className="subtitle has-text-centered	has-text-white">
+        Examine the financial interests of Pennsylvania officials.
+      </h2>
     </div>
-)
+  </div>
+);
 
-export default Header
+export default Header;
+
+//
