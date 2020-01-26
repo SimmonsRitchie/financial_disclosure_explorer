@@ -10,16 +10,18 @@ import SearchResultsContextProvider from "../context/SearchResultsContext";
 class Main extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="main__container">
         <Header />
-        <SearchContextProvider>
-          <SearchResultsContextProvider data={this.props.data}>
-            <Body>
-              <SearchBar />
-              <SearchResults />
-            </Body>
-          </SearchResultsContextProvider>
-        </SearchContextProvider>
+        <div className="main__content">
+          <SearchContextProvider>
+            <SearchResultsContextProvider data={this.props.data}>
+              <Body className="container">
+                <SearchBar />
+                <SearchResults />
+              </Body>
+            </SearchResultsContextProvider>
+          </SearchContextProvider>
+        </div>
         <Footer />
       </div>
     );

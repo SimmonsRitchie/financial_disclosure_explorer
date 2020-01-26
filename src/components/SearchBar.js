@@ -16,8 +16,10 @@ const SearchBar = (props) => {
   }
 
   return (
-      <div className="level">
-        <input className="input is-rounded" type="text" onChange={handleChange} value={text} placeholder={"Search for lawmaker, institution, or keyword"}/>
+      <div className="section">
+        <div className="container">
+          <input className="input is-rounded" type="text" onChange={handleChange} value={text} placeholder={"Search for lawmaker, institution, or keyword"}/>
+        </div>
       </div>
   );
 };

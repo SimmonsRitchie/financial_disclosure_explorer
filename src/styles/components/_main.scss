@@ -1,0 +1,15 @@
+/* These classes ensure that our footer sticks to the bottom of the page and that our content
+expands as our viewport height increases.
+
+This was inspired by a blog post by Philip Walton: https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+*/
+
+.main__container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main__content {
+  flex: 1;
+}

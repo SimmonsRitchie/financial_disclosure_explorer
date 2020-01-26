@@ -26,7 +26,7 @@ const SearchResults = (props) => {
   }, [searchText]);
   return (
     <section>
-        <div className="level">
+        <div className="container">
           <div className="content">
             <h2 className="is-size-6 has-text-centered">
               Displaying: <strong>{slicedData.length}</strong> of{" "}
