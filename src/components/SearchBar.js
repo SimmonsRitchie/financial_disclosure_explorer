@@ -1,27 +1,42 @@
-import React, {useState, useContext} from 'react';
-import { SearchContext } from "../context/SearchContext"
-import { SearchResultsContext } from "../context/SearchResultsContext";
+import React, { useState, useContext } from "react";
 
+import SearchBarQuick from "./SearchBarQuick";
+import SearchBarAdvanced from "./SearchBarAdvanced";
 
 const SearchBar = (props) => {
-  const {addSearchText} = useContext(SearchContext)
-  const [text, setText] = useState("")
-  const { updateSearchResults } = useContext(SearchResultsContext);
+  const [searchType, setSearchType] = useState('quick')
+  const SearchBarType = searchType === 'quick' ? 
+    <SearchBarQuick/> : 
+    <SearchBarAdvanced/>
 
-  const handleChange = (e) => {
-    const searchText = e.target.value
-    setText(searchText)
-    addSearchText(searchText)
-    updateSearchResults(searchText)
+
+  const handleSearchType = (searchType) => {
+    if (searchType == 'quick') {
+        setSearchType('quick')
+    } else if (searchType == 'advanced') {
+      setSearchType('advanced')
+    }
   }
 
   return (
-      <div className="section">
-        <div className="container">
-          <input className="input is-rounded" type="text" onChange={handleChange} value={text} placeholder={"Search for lawmaker, institution, or keyword"}/>
+    <div className="section">
+      <div className="container">
+        <div className="tabs is-centered is-toggle is-small" >
+          <ul>
+            <li className={searchType === 'quick' ? "is-active" : ""} onClick={() => handleSearchType('quick')}>
+              <a>Quick search</a>
+            </li>
+            <li className={searchType === 'advanced' ? "is-active" : ""} onClick={() => handleSearchType('advanced')}>
+              <a>Advanced search</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          {SearchBarType}
         </div>
       </div>
+    </div>
   );
 };
 
-export default SearchBar
+export default SearchBar;
