@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { SearchContext } from "../context/SearchContext";
 import SearchResultsItem from "./SearchResultsItem";
-import { applySearchTerms } from "../utils/search";
 import Pagination from "rc-pagination";
 import "rc-pagination/assets/index.css";
 import { SearchResultsContext } from "../context/SearchResultsContext";
