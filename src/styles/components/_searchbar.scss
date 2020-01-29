@@ -1,0 +1,20 @@
+.searchbar__option-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  margin-bottom: $s-size;
+
+  a {
+    padding: 0 $xs-size;
+    font-size: $size-7;
+  }
+}
+
+.searchbar__option-active {
+  color: $primary;
+}
+
+.searchbar__option {
+  color: $grey;
+}
