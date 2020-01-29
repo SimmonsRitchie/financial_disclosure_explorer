@@ -18,3 +18,23 @@
 .searchbar__option {
   color: $grey;
 }
+
+.searchbar__divider {
+  margin: 0 0 $xs-size 0;
+}
+
+.searchbar__advanced {
+  padding-bottom: $s-size;
+}
+
+.searchbar__advanced-filter-container {
+  padding: $xs-size;
+}
+
+// .searchbar__advanced-filter-container:nth-child(even) {
+//   background-color: $white-ter;
+// }
+
+// .searchbar__advanced-filter-container:nth-child(odd) {
+//   background-color: $white;
+// }

@@ -42,11 +42,12 @@ const SearchBarAdvanced = () => {
 
   return (
     <div>
-      <div className="content"></div>
+      <div className="searchbar__advanced">
       {searchFilters.map(searchFilter => {
         return <SearchBarAdvancedFilter handleInputChange={handleInputChange} searchFilter={searchFilter} removeFilter={removeFilter} key={searchFilter.id} disableRemove={disableRemove}/>
       })}
-      <div className="buttons has-addons is-centered">
+      </div>
+      <div className="buttons is-centered">
         <button disabled={disableAddFilter} className="button" onClick={addFilter}>Add filter</button>
       </div>
       {disableAddFilter && <p className="has-text-centered is-size-7 has-text-danger">*Maximum of {MAX_FILTERS} filters</p>}

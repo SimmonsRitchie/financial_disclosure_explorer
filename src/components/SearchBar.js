@@ -17,7 +17,7 @@ const SearchBar = props => {
   };
 
   return (
-    <div className="section">
+    <section className="container__section">
       <div className="container">
         <div className="searchbar__option-container">
           <a
@@ -43,7 +43,7 @@ const SearchBar = props => {
         </div>
         <div>{SearchBarType}</div>
       </div>
-    </div>
+    </section>
   );
 };
 

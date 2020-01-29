@@ -27,7 +27,7 @@ const SearchResults = (props) => {
     setCurrentPage(1);
   }, [searchText]);
   return (
-    <section>
+    <section className="container__section">
       <SearchResultsDetails itemsOnPage={slicedData.length} totalItems={results.length}/>
       <div className="container">
         {slicedData.map((item, idx) => {
