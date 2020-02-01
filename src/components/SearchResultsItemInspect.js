@@ -2,6 +2,7 @@ import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import PdfViewer from "./PdfViewer";
+import ExtractedText from "./ExtractedText";
 
 const SearchResultsItemInspect = ({item}) => {
   return (
@@ -13,7 +14,7 @@ const SearchResultsItemInspect = ({item}) => {
         </TabList>
 
       <TabPanel >
-        <h2>Extracted text</h2>
+        <ExtractedText item={item}/>
       </TabPanel>
 
       <TabPanel >
