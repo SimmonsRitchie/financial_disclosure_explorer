@@ -11,8 +11,12 @@ const SearchResultsContextProvider = (props) => {
     setResults(filteredData)
   }
 
+  const updateSearchResultsAdvanced = (searchArray) => {
+    console.log(searchArray)
+  }
+
   return (
-  <SearchResultsContext.Provider value={{results, updateSearchResults}}>
+  <SearchResultsContext.Provider value={{results, updateSearchResults, updateSearchResultsAdvanced}}>
     {props.children}
   </SearchResultsContext.Provider>);
 };

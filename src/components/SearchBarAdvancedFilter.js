@@ -29,9 +29,9 @@ const SearchBarAdvancedFilter = ({
         <p className="control">
           <span className="select">
             <select
-              value={searchFilter.operator}
+              value={searchFilter.condition}
               data-id={searchFilter.id}
-              name="operator"
+              name="condition"
               onChange={handleInputChange}
             >
               <option value="contains">Contains</option>

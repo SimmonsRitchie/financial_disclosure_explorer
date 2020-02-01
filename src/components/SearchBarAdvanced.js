@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
+import { SearchResultsContext } from "../context/SearchResultsContext";
 import SearchBarAdvancedFilter from "./SearchBarAdvancedFilter";
 import uuid from 'uuid/v1'
 
-const DEFAULT_SEARCH_FILTER = {field: 'filerPosition', operator: 'excludes', keywords:''}
+const DEFAULT_SEARCH_FILTER = {field: 'filerPosition', condition: 'excludes', keywords:''}
 const MAX_FILTERS = 5
 
 const SearchBarAdvanced = () => {
+  const { updateSearchResultsAdvanced } = useContext(SearchResultsContext);
   const [searchFilters, setSearchFilters] = useState([
     {...DEFAULT_SEARCH_FILTER, id: uuid()},
   ])
@@ -25,6 +27,7 @@ const SearchBarAdvanced = () => {
       ...searchFilters.slice(objIndex + 1),
     ];
     setSearchFilters(updatedArray)
+    updateSearchResultsAdvanced(updatedArray)
   }
 
   const addFilter = () => {
@@ -37,7 +40,6 @@ const SearchBarAdvanced = () => {
   }
 
   const disableRemove = searchFilters.length < 2
-
   const disableAddFilter = searchFilters.length >= MAX_FILTERS
 
   return (
