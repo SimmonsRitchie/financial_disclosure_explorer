@@ -29,7 +29,7 @@ export const SEARCH_FIELDS = [
   {
     display: "Public position",
     value: "q04_public_position",
-    inputType: "text"
+    inputType: "select"
   },
   {
     display: "Real estate interests",
