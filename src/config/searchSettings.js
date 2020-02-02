@@ -53,12 +53,12 @@ export const SEARCH_FIELDS = [
   },
   {
     display: "Transportation, lodging, hospitality",
-    value: "q12_transportation-lodging-hospitality",
+    value: "q12_transportation_lodging_hospitality",
     inputType: "text"
   },
   {
     display: "Office, directorship or employment",
-    value: "q13_office-directorship-employment",
+    value: "q13_office_directorship_employment",
     inputType: "text"
   },
   {
