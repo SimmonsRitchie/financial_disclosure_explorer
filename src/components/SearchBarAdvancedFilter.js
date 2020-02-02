@@ -15,8 +15,8 @@ const SearchBarAdvancedFilter = props => {
   return (
     <div className="searchbar__advanced-filter-container">
       <div className="field is-grouped is-grouped-multiline is-grouped-centered">
-        <p className="control">
-          <span className="select">
+        <p className="control is-expanded">
+          <span className="select is-fullwidth">
             <select
               data-id={searchFilter.id}
               value={searchFilter.field}
@@ -32,8 +32,8 @@ const SearchBarAdvancedFilter = props => {
           </span>
         </p>
 
-        <p className="control">
-          <span className="select">
+        <p className="control is-expanded">
+          <span className="select is-fullwidth">
             <select
               value={searchFilter.condition}
               data-id={searchFilter.id}
@@ -85,7 +85,7 @@ const DynamicInput = props => {
     desiredInput = <SelectInput {...props} />;
   }
 
-  return <p className="control is-expanded ">{desiredInput}</p>;
+  return <p className="control is-expanded">{desiredInput}</p>;
 };
 
 const SelectInput = ({ handleInputChange, searchFilter }) => {
@@ -93,21 +93,21 @@ const SelectInput = ({ handleInputChange, searchFilter }) => {
   const uniqueVals = getUniqueFieldVals(searchFilter.field);
 
   return (
-    <select
-      data-id={searchFilter.id}
-      name="keywords"
-      className="input"
-      onChange={handleInputChange}
-      value={searchFilter.keywords}
-    >
-      {
-        uniqueVals.map(item => (
-          <option key={item} value={item}>
-            {item}
-          </option>
-        ))
-      }
-    </select>
+      <div className="select is-fullwidth">
+        <select
+          data-id={searchFilter.id}
+          name="keywords"
+          className="input"
+          onChange={handleInputChange}
+          value={searchFilter.keywords}
+        >
+          {uniqueVals.map(item => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </div>
   );
 };
 
