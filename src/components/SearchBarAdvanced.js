@@ -33,9 +33,9 @@ const SearchBarAdvanced = () => {
     const objIndex = searchFilters.findIndex(obj => obj.id === filterId);
     // create new obj
     let updatedObj = { ...searchFilters[objIndex], [name]: value};
-    // if field has changed, then update inputType in object
+    // if field has changed, then update inputType in object and clear keywords
     if (e.target.name === 'field') {
-      updatedObj = {...updatedObj, inputType}
+      updatedObj = {...updatedObj, inputType, keywords: ""}
     }
     // make new array of objects including updated obj
     const updatedArray = [

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { SEARCH_FIELDS } from "../config/searchSettings";
+import { SearchResultsContext } from "../context/SearchResultsContext";
 
 const SearchBarAdvancedFilter = props => {
   const {
@@ -61,7 +62,9 @@ const SearchBarAdvancedFilter = props => {
   );
 };
 
-const DynamicInput = ({ inputType, searchFilter, handleInputChange }) => {
+const DynamicInput = props => {
+  const { inputType, searchFilter, handleInputChange } = props;
+
   const textInput = (
     <input
       data-id={searchFilter.id}
@@ -74,7 +77,22 @@ const DynamicInput = ({ inputType, searchFilter, handleInputChange }) => {
     />
   );
 
-  const selectInput = (
+  let desiredInput = textInput;
+
+  if (inputType === "text") {
+    desiredInput = textInput;
+  } else if (inputType === "select") {
+    desiredInput = <SelectInput {...props} />;
+  }
+
+  return <p className="control is-expanded ">{desiredInput}</p>;
+};
+
+const SelectInput = ({ handleInputChange, searchFilter }) => {
+  const { getUniqueFieldVals } = useContext(SearchResultsContext);
+  const uniqueVals = getUniqueFieldVals(searchFilter.field);
+
+  return (
     <select
       data-id={searchFilter.id}
       name="keywords"
@@ -82,18 +100,15 @@ const DynamicInput = ({ inputType, searchFilter, handleInputChange }) => {
       onChange={handleInputChange}
       value={searchFilter.keywords}
     >
-      <option value="test">Test</option>
+      {
+        uniqueVals.map(item => (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        ))
+      }
     </select>
   );
-  let desiredInput = textInput;
-
-  if (inputType === "text") {
-    desiredInput = textInput;
-  } else if (inputType === "select") {
-    desiredInput = selectInput;
-  }
-
-  return <p className="control is-expanded ">{desiredInput}</p>;
 };
 
 export default SearchBarAdvancedFilter;
