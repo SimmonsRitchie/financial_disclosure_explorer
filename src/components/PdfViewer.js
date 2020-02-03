@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { Document, Page } from "react-pdf/dist/entry.parcel";
 import { SizeMe } from "react-sizeme";
 import PdfViewerPageNav from "./PdfViewerPageNav";
+import COSTA from "../data/pdfs/PA-COSTA-JR-JAY.pdf"
 
 const PdfViewer = ({ pdfPath }) => {
 
   // TODO: Convert to class based component, add _isMounted toggle to prevent attempt to set state
   // when component is unmounted.
+
+  // TODO: replace TEST_PDF_PATH with pdfPath
+  const TEST_PDF_PATH = COSTA
+
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [loadSucess, setLoadSuccess] = useState(false);
@@ -36,7 +41,7 @@ const PdfViewer = ({ pdfPath }) => {
         refreshMode={"debounce"}
         render={({ size }) => (
           <div>
-            <Document file={pdfPath} onLoadSuccess={onDocumentLoadSuccess}>
+            <Document file={TEST_PDF_PATH} onLoadSuccess={onDocumentLoadSuccess}>
               <Page
                 className={"pdf-viewer__document"}
                 pageNumber={pageNumber}
