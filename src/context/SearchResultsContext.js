@@ -17,16 +17,13 @@ const SearchResultsContextProvider = props => {
     } else {
       const url = quickSearchUrl(searchText);
 
-      debounce(
-        datasetteFetch(url).then(fetchedData => {
-          if (!fetchedData) {
-            return;``
-          }
-          console.log("FETCHED DATA:", fetchedData);
-          setResults(fetchedData);
-        }),
-        100
-      );
+      datasetteFetch(url).then(fetchedData => {
+        if (!fetchedData) {
+          return;
+        }
+        console.log("FETCHED DATA:", fetchedData);
+        setResults(fetchedData);
+      });
     }
   };
 

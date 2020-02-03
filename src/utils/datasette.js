@@ -1,5 +1,4 @@
 import { SEARCH_FIELDS } from "../config/searchSettings";
-import { debounce } from "./debounce";
 
   // Get all the search fields we want to search
   let formattedSearchFields = SEARCH_FIELDS.map(
@@ -62,7 +61,6 @@ export const datasetteFetch = (url) => {
         // after a faster one.
         return;
       }
-      console.log(d);
       return d;
     });
 };
