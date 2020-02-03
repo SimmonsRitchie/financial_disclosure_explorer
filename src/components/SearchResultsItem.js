@@ -7,7 +7,7 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 const SearchResultsItem = (props) => {
   const { 
     q01_first_name,
-    q01_middle_initial,
+    q01_middle_name,
     q01_last_name,
     q04_public_position,
     meta_filing_year,
@@ -30,7 +30,7 @@ const SearchResultsItem = (props) => {
       <div className="box" >
       <div className="results-item__container-header" onClick={handleClick}>
         <div className="results-item__container-basic-details">
-          <h2 className="title is-size-5">{q01_first_name} {q01_middle_initial}. {q01_last_name}</h2>
+          <h2 className="title is-size-5">{q01_first_name} {q01_middle_name && `${q01_middle_name[0]}.`} {q01_last_name}</h2>
           <h3 className="subtitle is-size-6">Filing year: {meta_filing_year}, Filing as: {q04_public_position}</h3>
         </div>
         <div >{expandText}</div>
