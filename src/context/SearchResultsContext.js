@@ -15,7 +15,7 @@ const SearchResultsContextProvider = (props) => {
     const url = quickSearchUrl(searchText)
     datasetteFetch(url).then(fetchedData => {
       console.log('FETCHED DATA:', fetchedData)
-      setResults(url)
+      setResults(fetchedData)
     }).catch(setResults([]))
   }
 
