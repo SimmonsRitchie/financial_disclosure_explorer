@@ -8,10 +8,7 @@ export const SearchResultsContext = createContext();
 const SearchResultsContextProvider = props => {
   const [results, setResults] = useState(props.data);
 
-  const updateSearchResults = searchText => {
-    //TODO: Connect with backend
-    // const filteredData = applySearchTerms(searchText, props.data); // local test version
-
+  const updateSearchResults = (searchText) => {
     if (searchText === "") {
       setResults(props.data);
     } else {
@@ -27,7 +24,7 @@ const SearchResultsContextProvider = props => {
     }
   };
 
-  const updateSearchResultsAdvanced = searchArray => {
+  const updateSearchResultsAdvanced = (searchArray) => {
     //TODO: Connect with backend
   };
 
