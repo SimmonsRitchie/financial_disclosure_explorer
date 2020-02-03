@@ -1,5 +1,7 @@
-### Boilerplate Spotlight React Widget
-This is a template for creating React JS widgets or data visualizations for Spotlight PA articles. It incorporates Spotlight PA styles and the Bulma CSS framework.
+### Pa. Financial Disclosure Explorer
+A searchable portal of statements of financial interest filed by Pennsylvania officials built with React.
+
+This is a joint project between Spotlight PA and Temple University.
 
 It uses [parcel.js](https://github.com/parcel-bundler/parcel) to bundle the source files.
 
@@ -61,52 +63,3 @@ This command assumes you named your Spotlight PA account 'spotlight' in '~/.aws/
 5) You're ready to deploy! Run the following command:
 
 ```npm run deploy```
-
-#### About Pym
-This widget is designed to be embedded as an iframe. It uses [pym.js](https://github.com/nprapps/pym.js/) to resize the iframe's height as needed.
-
-To embed this widget and take advantage of pym, your embed code should look something like this:
-
-```
-<!--- START responsive iframe -->
-<div id="container"></div>
-<script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
-<script>var pymParent = new pym.Parent('container', 'https://interactives.data.spotlightpa.org/2019/NAME-OF-YOUR-WIDGET/', {});</script>
-<!--- END responsive iframe -->
-```
-
-#### Pym troubleshooting
-
-##### Height not updating
-Sometimes your widget's height may increase without pym updating the iframe accordingly. Our experience is that it's best to place pym.sendHeight calls in components that may expand the overall height of the widget. We recommend adding these calls to a component's componentDidUpdate or componentDidMount lifecycle methods.
-
-In some cases you may also need to add a timeout.
-
-To assist, we've created a helper function. Here's an example of it in use:
-
-```
-import React from 'react'
-import { pymSendHeight } from '../utils/handlePym'
-
-class Example extends React.Component {
-  
-  componentDidMount() {
-    // Tell pym to increase height 500ms after component mounts
-    pymSendHeight({timeout: 500})
-  }
-
-  render() {
-    return (
-      <div>
-      <h2>Spotlight App</h2>
-      </div>
-    )
-  }
-}
-```
-##### Widget 'snaps' back in mobile
-
-If you're viewing the widget on a small a screen and the height decreases significantly you may encounter an unpleasant side effect: you're stuck on the same part of the page but the widget has essentially 'snapped' out from under you.
-
-The best defense against this situation may be to simply avoid situations where the widget's height will decrease significantly. Try to keep the widget's height relatively stable between user interactions. 
-
