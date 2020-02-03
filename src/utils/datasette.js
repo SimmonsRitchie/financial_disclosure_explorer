@@ -44,9 +44,11 @@ export const allRowsUrl = () => {
 };
 
 
+
+// Used to avoid race-conditions:
+let requestInFlight = null;
+
 export const datasetteFetch = (url) => {
-  // Used to avoid race-conditions:
-  let requestInFlight = null;
 
   // Unique object used just for race-condition comparison
   let currentRequest = {};

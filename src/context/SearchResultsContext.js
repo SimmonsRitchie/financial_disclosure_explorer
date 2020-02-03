@@ -16,8 +16,12 @@ const SearchResultsContextProvider = props => {
       setResults(props.data);
     } else {
       const url = quickSearchUrl(searchText);
+
       debounce(
         datasetteFetch(url).then(fetchedData => {
+          if (!fetchedData) {
+            return;``
+          }
           console.log("FETCHED DATA:", fetchedData);
           setResults(fetchedData);
         }),
