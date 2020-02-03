@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, Component } from "react";
 import { SearchContext } from "../context/SearchContext";
 import SearchResultsItem from "./SearchResultsItem";
 import Pagination from "rc-pagination";

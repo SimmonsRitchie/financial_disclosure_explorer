@@ -2,18 +2,20 @@ import React, { createContext, useState } from "react";
 import { applySearchTerms } from "../utils/search";
 import { naturalSort } from "../utils/sort";
 import { datasetteFetch, quickSearchUrl } from "../utils/datasette";
-import { debounce } from "../utils/debounce";
 export const SearchResultsContext = createContext();
 
 const SearchResultsContextProvider = props => {
   const [results, setResults] = useState(props.data);
 
+  const loadAllResults = () => {
+    setResults(props.data);
+  }
+
   const updateSearchResults = (searchText) => {
-    if (searchText === "") {
-      setResults(props.data);
+    if (!searchText) {
+      loadAllResults();
     } else {
       const url = quickSearchUrl(searchText);
-
       datasetteFetch(url).then(fetchedData => {
         if (!fetchedData) {
           return;
@@ -40,7 +42,8 @@ const SearchResultsContextProvider = props => {
         results,
         updateSearchResults,
         updateSearchResultsAdvanced,
-        getUniqueFieldVals
+        getUniqueFieldVals,
+        loadAllResults
       }}
     >
       {props.children}
