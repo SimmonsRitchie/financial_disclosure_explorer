@@ -93,7 +93,7 @@ const SelectInput = ({ handleInputChange, searchFilter }) => {
   const uniqueVals = getUniqueFieldVals(searchFilter.field);
 
   return (
-      <div className="select is-fullwidth">
+      <span className="select is-fullwidth">
         <select
           data-id={searchFilter.id}
           name="keywords"
@@ -107,7 +107,7 @@ const SelectInput = ({ handleInputChange, searchFilter }) => {
             </option>
           ))}
         </select>
-      </div>
+      </span>
   );
 };
 
