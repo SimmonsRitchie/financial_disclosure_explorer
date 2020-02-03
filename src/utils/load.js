@@ -1,12 +1,9 @@
 import { json } from "d3-fetch";
 import {DATA} from "~/data/dummy-data.js";
+import {datasetteFetch} from "./datasette"
 
 export const loadData = () => {
   /* Fetch and parse files.*/
-  return Promise.all([
-    DATA,
-  ]).then(DATA => {
-    console.log(DATA)
-    return DATA[0]
-  })
+  const allDataUrl = "https://sfi-explorer.herokuapp.com/sfi/extracted.json?_shape=array"
+  return datasetteFetch(allDataUrl)
 };

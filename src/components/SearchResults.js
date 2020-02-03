@@ -13,11 +13,12 @@ const SearchResults = (props) => {
   const { searchText } = useContext(SearchContext);
   const { results } = useContext(SearchResultsContext);
   const [currentPage, setCurrentPage] = useState(1);
+  console.log(results)
 
   // handle pagination
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   const endOffset = offset + ITEMS_PER_PAGE;
-  const slicedData = results.slice(offset, endOffset);
+  const slicedData = results.slice(offset, endOffset)
   const onChange = page => {
     setCurrentPage(page);
   };
@@ -29,9 +30,9 @@ const SearchResults = (props) => {
     <section className="container__section">
       <SearchResultsDetails itemsOnPage={slicedData.length} totalItems={results.length}/>
       <div className="container">
-        {slicedData.map((item, idx) => {
-          return <SearchResultsItem key={item.meta_id} item={item} />;
-        })}
+        {slicedData.length ? slicedData.map((item, idx) => {
+          return <SearchResultsItem key={item.rowid} item={item} />;
+        }) : <div>No records to display</div>}
       </div>
       <section className="section">
         <div className="container">

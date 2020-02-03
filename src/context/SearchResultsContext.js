@@ -1,16 +1,22 @@
 import React, { createContext, useState } from "react";
-
-export const SearchResultsContext = createContext();
 import { applySearchTerms } from "../utils/search";
 import {naturalSort} from "../utils/sort"
+import { datasetteFetch, quickSearchUrl } from "../utils/datasette"
+
+export const SearchResultsContext = createContext();
+
 
 const SearchResultsContextProvider = (props) => {
   const [results, setResults] = useState(props.data)
 
   const updateSearchResults = (searchText) => {
     //TODO: Connect with backend
-    const filteredData = applySearchTerms(searchText, props.data);
-    setResults(filteredData)
+    // const filteredData = applySearchTerms(searchText, props.data); // local test version
+    const url = quickSearchUrl(searchText)
+    datasetteFetch(url).then(fetchedData => {
+      console.log('FETCHED DATA:', fetchedData)
+      setResults(url)
+    }).catch(setResults([]))
   }
 
   const updateSearchResultsAdvanced = (searchArray) => {
