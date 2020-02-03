@@ -13,13 +13,11 @@ const SearchResults = (props) => {
   const { searchText } = useContext(SearchContext);
   const { results } = useContext(SearchResultsContext);
   const [currentPage, setCurrentPage] = useState(1);
-  console.log(results)
 
   // handle pagination
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   const endOffset = offset + ITEMS_PER_PAGE;
   const slicedData = results && results.length ? results.slice(offset, endOffset) : []
-  console.log("sliced data", slicedData)
   const onChange = page => {
     setCurrentPage(page);
   };

@@ -1,12 +1,12 @@
 import { SEARCH_FIELDS } from "../config/searchSettings";
 
-  // Get all the search fields we want to search
-  let formattedSearchFields = SEARCH_FIELDS.map(
-    item => `extracted.${item.value}`
-  );
-  formattedSearchFields = formattedSearchFields.join(", ");
+// Get all the search fields we want to search
+let formattedSearchFields = SEARCH_FIELDS.map(
+  item => `extracted.${item.value}`
+);
+formattedSearchFields = formattedSearchFields.join(", ");
 
-export const quickSearchUrl = (searchValue) => {
+export const quickSearchUrl = searchValue => {
   // Embed the SQL query in a multi-line backtick string:
   const sql = `select
   extracted.rowid, snippet(extracted_fts, -1, 'b4de2a49c8', '8c94a2ed4b', '...', 100) as snippet,
@@ -25,7 +25,7 @@ where extracted_fts match :search || "*"
     `&search=${encodeURIComponent(searchValue)}&_shape=array`;
 
   console.log(url);
-  return url
+  return url;
 };
 
 export const allRowsUrl = () => {
@@ -36,19 +36,17 @@ export const allRowsUrl = () => {
   // Construct the API URL, using encodeURIComponent() for the parameters
   const url =
     "https://sfi-explorer.herokuapp.com/sfi.json?sql=" +
-    encodeURIComponent(sql) + `&_shape=array`;
+    encodeURIComponent(sql) +
+    `&_shape=array`;
 
   console.log(url);
-  return url
+  return url;
 };
-
-
 
 // Used to avoid race-conditions:
 let requestInFlight = null;
 
-export const datasetteFetch = (url) => {
-
+export const datasetteFetch = url => {
   // Unique object used just for race-condition comparison
   let currentRequest = {};
   requestInFlight = currentRequest;
