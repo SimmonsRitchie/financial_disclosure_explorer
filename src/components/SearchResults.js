@@ -18,7 +18,7 @@ const SearchResults = (props) => {
   // handle pagination
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   const endOffset = offset + ITEMS_PER_PAGE;
-  const slicedData = results.length ? results.slice(offset, endOffset) : []
+  const slicedData = results && results.length ? results.slice(offset, endOffset) : []
   console.log("sliced data", slicedData)
   const onChange = page => {
     setCurrentPage(page);
@@ -29,7 +29,7 @@ const SearchResults = (props) => {
   }, [searchText]);
   return (
     <section className="container__section">
-      <SearchResultsDetails itemsOnPage={slicedData.length} totalItems={results.length}/>
+      <SearchResultsDetails itemsOnPage={slicedData.length} totalItems={results ? results.length : 0}/>
       <div className="container">
         {slicedData.length ? slicedData.map((item, idx) => {
           return <SearchResultsItem key={item.rowid} item={item} />;
