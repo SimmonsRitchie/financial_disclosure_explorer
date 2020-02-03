@@ -18,7 +18,7 @@ const SearchResults = (props) => {
   // handle pagination
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   const endOffset = offset + ITEMS_PER_PAGE;
-  const slicedData = results.slice(offset, endOffset)
+  const slicedData = results.length ? results.slice(offset, endOffset) : []
   console.log("sliced data", slicedData)
   const onChange = page => {
     setCurrentPage(page);
