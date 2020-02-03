@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import { applySearchTerms } from "../utils/search";
 import {naturalSort} from "../utils/sort"
 import { datasetteFetch, quickSearchUrl } from "../utils/datasette"
-
+import { debounce} from "../utils/debounce"
 export const SearchResultsContext = createContext();
 
 
@@ -13,10 +13,10 @@ const SearchResultsContextProvider = (props) => {
     //TODO: Connect with backend
     // const filteredData = applySearchTerms(searchText, props.data); // local test version
     const url = quickSearchUrl(searchText)
-    datasetteFetch(url).then(fetchedData => {
+    debounce(datasetteFetch(url).then(fetchedData => {
       console.log('FETCHED DATA:', fetchedData)
       setResults(fetchedData)
-    }).catch(setResults([]))
+    }), 100)
   }
 
   const updateSearchResultsAdvanced = (searchArray) => {

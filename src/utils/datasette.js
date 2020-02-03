@@ -38,6 +38,7 @@ export const datasetteFetch = (url) => {
   requestInFlight = currentRequest;
   return fetch(url)
     .then(r => r.json())
+    .catch(r => console.log(r))
     .then(d => {
       if (requestInFlight !== currentRequest) {
         // Avoid race conditions where a slow request returns
