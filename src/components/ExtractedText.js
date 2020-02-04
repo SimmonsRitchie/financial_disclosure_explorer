@@ -10,8 +10,8 @@ const ExtractedText = ({ item }) => {
       <tbody>
         {DISPLAY_FIELDS.map(field => (
           <tr key={field.value}>
-            <td><strong>{field.display_name}</strong></td>
-            <td>{item[field.value]}</td>
+            <td><span className="has-text-black-bis">{field.display_name}</span></td>
+            <td><span className="has-text-grey">{item[field.value]}</span></td>
           </tr>
         ))}
       </tbody>
