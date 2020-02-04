@@ -15,7 +15,9 @@ const SearchResultsContextProvider = props => {
     if (!searchText) {
       loadAllResults();
     } else {
-      const url = quickSearchUrl(searchText);
+      // remove chars that will cause sql errors
+      const cleanSearchText = searchText.trim().replace(/[^a-zA-Z0-9 ]/g, "");
+      const url = quickSearchUrl(cleanSearchText);
       datasetteFetch(url).then(fetchedData => {
         if (!fetchedData) {
           return;

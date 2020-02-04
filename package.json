@@ -10,7 +10,10 @@
     "clean": "find dist -mindepth 1 -delete || mkdir dist",
     "deploy": "npm run clean && npm run build:prod && s3deploy -source dist -bucket interactives.data.spotlightpa.org -path 2020/financial-dislosure-explorer/ -region us-east-2  -distribution-id EFR0HZ7VA3Q92 -public-access",
     "start": "parcel src/index.html",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "start:parcel": "echo 'starting parcel server' && parcel src/index.html",
+    "start:datasette": "echo 'starting datasette server' && datasette serve $SFI_DB --cors",
+    "start:both": "npm run start:parcel & npm run start:datasette & wait"
   },
   "dependencies": {
     "@emotion/core": "^10.0.27",

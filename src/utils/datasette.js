@@ -6,6 +6,9 @@ let formattedSearchFields = SEARCH_FIELDS.map(
 );
 formattedSearchFields = formattedSearchFields.join(", ");
 
+// API URL
+const API_URL = process.env.DATASETTE_URL;
+
 export const quickSearchUrl = searchValue => {
   // Embed the SQL query in a multi-line backtick string:
   const sql = `select
@@ -20,7 +23,8 @@ where extracted_fts match :search || "*"
 
   // Construct the API URL, using encodeURIComponent() for the parameters
   const url =
-    "https://sfi-explorer.herokuapp.com/sfi.json?sql=" +
+    API_URL +
+    "sfi.json?sql=" +
     encodeURIComponent(sql) +
     `&search=${encodeURIComponent(searchValue)}&_shape=array`;
 
@@ -35,9 +39,7 @@ export const allRowsUrl = () => {
 
   // Construct the API URL, using encodeURIComponent() for the parameters
   const url =
-    "https://sfi-explorer.herokuapp.com/sfi.json?sql=" +
-    encodeURIComponent(sql) +
-    `&_shape=array`;
+    API_URL + "sfi.json?sql=" + encodeURIComponent(sql) + `&_shape=array`;
 
   console.log(url);
   return url;

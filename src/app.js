@@ -6,6 +6,9 @@ import Main from './components/Main'
 import Loader from './components/Loader'
 import { loadData } from './utils/load'
 
+
+const test = process.env.DATASETTE_URL
+console.log(test)
 // RENDERAPP
 // Function below checks to see whether we have already rendered the page
 // if we have, it ensures we don't render it again.
