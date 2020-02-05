@@ -41,7 +41,7 @@ const PdfViewer = ({ pdfPath }) => {
         refreshMode={"debounce"}
         render={({ size }) => (
           <div>
-            <Document file={TEST_PDF_PATH} onLoadSuccess={onDocumentLoadSuccess}>
+            <Document file={pdfPath} onLoadSuccess={onDocumentLoadSuccess}>
               <Page
                 className={"pdf-viewer__document"}
                 pageNumber={pageNumber}
