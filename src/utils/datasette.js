@@ -1,4 +1,4 @@
-import { SEARCH_FIELDS } from "../config/searchSettings";
+import { SEARCH_FIELDS } from "../config/fields";
 
 // Get all the search fields we want to search
 let formattedSearchFields = SEARCH_FIELDS.map(
