@@ -2,13 +2,30 @@
   padding: $xs-size;
 }
 
-.pdf-viewer__document {
+.pdf-viewer__document-container {
+  padding-bottom: $s-size;
+}
+
+.pdf-viewer__pdf-overlay-container {
+  position: relative;
+}
+
+.pdf-viewer__pdf-overlay-icon {
+  position: absolute;
+  right: 3%;
+  top: 3%;
+  z-index: 10;
+  svg {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 20px;
+  }
+}
+
+.pdf-viewer__page {
   border: black 1px solid;
 }
 
-.pdf-viewer__page-nav-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
+.pdf-viewer__container-header {
+  padding-bottom: $s-size;
 }

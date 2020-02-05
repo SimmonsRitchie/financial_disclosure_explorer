@@ -11,7 +11,7 @@ const PdfViewerPageNav = ({ pageNumber, numPages, previousPage, nextPage }) => {
       <button className={"pdf-page-nav__arrow"} type="button" disabled={pageNumber <= 1} onClick={previousPage}>
       {leftArrow}
       </button>
-      <p>
+      <p className="pdf-page-nav__text">
         Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
       </p>
       <button
