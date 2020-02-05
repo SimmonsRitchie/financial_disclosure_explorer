@@ -1,8 +1,10 @@
 import React, { createContext, useState } from "react";
-import { applySearchTerms } from "../utils/search";
 import { naturalSort } from "../utils/sort";
 import { datasetteFetch, quickSearchUrl } from "../utils/datasette";
+import { cleanText } from "../utils/clean"
+
 export const SearchResultsContext = createContext();
+
 
 const SearchResultsContextProvider = props => {
   const [results, setResults] = useState(props.data);
@@ -16,7 +18,7 @@ const SearchResultsContextProvider = props => {
       loadAllResults();
     } else {
       // remove chars that will cause sql errors
-      const cleanSearchText = searchText.trim().replace(/[^a-zA-Z0-9 ]/g, "");
+      const cleanSearchText = cleanText(searchText);
       const url = quickSearchUrl(cleanSearchText);
       datasetteFetch(url).then(fetchedData => {
         if (!fetchedData) {

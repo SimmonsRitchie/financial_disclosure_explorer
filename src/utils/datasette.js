@@ -16,7 +16,7 @@ export const quickSearchUrl = searchValue => {
   extracted_fts.rank, ${formattedSearchFields}
 from extracted
   join extracted_fts on extracted.rowid = extracted_fts.rowid
-where extracted_fts match :search || "*"
+where extracted_fts match escape_fts(:search) || "*"
   order by rank`;
 
   console.log(sql);
