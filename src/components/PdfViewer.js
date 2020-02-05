@@ -47,7 +47,7 @@ const PdfViewer = ({ pdfPath }) => {
         refreshMode={"debounce"}
         render={({ size }) => (
           <div className="pdf-viewer__document-container">
-            <PdfOverlay pdfPath={pdfPath} size={size}>
+            <PdfOverlay pdfPath={pdfPath} size={size} loadSucess={loadSucess}>
               <Document file={displayPdf} onLoadSuccess={onDocumentLoadSuccess}>
                 <Page
                   className={"pdf-viewer__page"}
@@ -71,7 +71,7 @@ const PdfViewer = ({ pdfPath }) => {
   );
 };
 
-const PdfOverlay = ({ pdfPath, size, ...props }) => {
+const PdfOverlay = ({ pdfPath, size, loadSucess, ...props }) => {
   let iconSize;
   if (size.width < 700) {
     iconSize = 3;
@@ -80,13 +80,13 @@ const PdfOverlay = ({ pdfPath, size, ...props }) => {
   }
   return (
     <div className="pdf-viewer__pdf-overlay-container">
-      <a
+      {loadSucess && <a
         href={pdfPath}
         target="_blank"
         className="pdf-viewer__pdf-overlay-icon"
       >
         <FontAwesomeIcon icon={faExpand} size={`${iconSize}x`} />
-      </a>
+      </a>}
       {props.children}
     </div>
   );
