@@ -13,7 +13,7 @@ const SearchResultsItem = (props) => {
     q01_middle_name,
     q01_last_name,
     q04_public_position,
-    meta_filing_year,
+    q07_filing_year,
     snippet
   } = props.item;
 
@@ -25,8 +25,9 @@ const SearchResultsItem = (props) => {
   // We highlight the matching words because we know they'll begin with 'b4de2a49c8' and end with '8c94a2ed4b'
   // we also replace these terms in the text itself because sometimes a snippet contains more than one match but
   // one part is cut off.
-  const highlight = reactStringReplace(snippetEsc, /b4de2a49c8(.*)8c94a2ed4b/gi, (match, i) => (
+  const snippetReplace = reactStringReplace(snippetEsc, /b4de2a49c8(.*)8c94a2ed4b/gi, (match, i) => (
     <span key={i} style={{ color: 'red' }}>{match.replace(/b4de2a49c8|8c94a2ed4b/gi,"")}</span>));
+  const highlight = snippetEsc ? snippetReplace : null;
 
   const handleClick = () => {
     setExpand(!expand)
@@ -40,10 +41,10 @@ const SearchResultsItem = (props) => {
   return (
       <div className="box" >
       <div className="results-item__container-header" onClick={handleClick}>
-        <div className="results-item__container-basic-details">
-          <h2 className="title is-size-5">{q01_first_name} {q01_middle_name && `${q01_middle_name[0]}.`} {q01_last_name}</h2>
-          <h3 className="subtitle is-size-6">Filing year: {meta_filing_year}, Filing as: {q04_public_position}</h3>
-          {highlight && <span className="subtitle is-size-6 is-italic">...{highlight}...</span>}
+        <div>
+          <div className="has-text-weight-bold is-size-5">{q01_first_name} {q01_middle_name && `${q01_middle_name[0]}.`} {q01_last_name}</div>
+          <div className="is-size-6">Filing year: {q07_filing_year}, Filing as: {q04_public_position}</div>
+          {highlight && <div className="results-item__preview" ><span className="is-size-6 is-italic">...{highlight}...</span></div>}
         </div>
         <div >{expandText}</div>
       </div>
