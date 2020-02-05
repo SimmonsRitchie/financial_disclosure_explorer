@@ -9,7 +9,15 @@
   padding-top: $xs-size;
 }
 
-.results-item-inspect__container {
+.results-item-inspect__container-outer {
   padding-top: $s-size;
 }
 
+.results-item-inspect__container-inner {
+  padding: $s-size;
+
+  @media (max-width: 500px) {
+    padding: $xs-size;
+
+  }
+}

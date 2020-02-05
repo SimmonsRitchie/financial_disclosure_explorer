@@ -30,7 +30,7 @@ const PdfViewer = ({ pdfPath }) => {
   const nextPage = () => setPageNumber(pageNumber + 1);
 
   return (
-    <div className="pdf-viewer__container">
+    <div>
       {loadSucess && (
         <div className="pdf-viewer__container-header">
           <PdfViewerPageNav

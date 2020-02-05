@@ -6,23 +6,24 @@ import ExtractedText from "./ExtractedText";
 
 const SearchResultsItemInspect = ({item}) => {
   return (
-    <div className="results-item-inspect__container">
-      <Tabs>
+      <Tabs className="results-item-inspect__container-outer">
         <TabList>
           <Tab>Extracted text</Tab>
           <Tab>Document</Tab>
         </TabList>
-
-      <TabPanel >
-        <ExtractedText item={item}/>
+      <TabPanel>
+        <div className="results-item-inspect__container-inner">
+          <ExtractedText item={item}/>
+        </div>
       </TabPanel>
 
-      <TabPanel >
-        <PdfViewer pdfPath={item.meta_pdf_path} />
+      <TabPanel>
+        <div className="results-item-inspect__container-inner">
+          <PdfViewer pdfPath={item.meta_pdf_path} />
+        </div>
       </TabPanel>
 
       </Tabs>
-    </div>
   );
 };
 

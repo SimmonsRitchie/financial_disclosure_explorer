@@ -10,7 +10,7 @@ const ExtractedText = ({ item }) => {
   const cleanSearchText = cleanText(searchText)
 
   return (
-    <div className="extracted-text__container">
+    <div>
       {DISPLAY_FIELDS.map(field => {
 
         const displayVal = item[field.value] ? reactStringReplace(item[field.value], cleanSearchText, (match, i) => (
@@ -21,7 +21,7 @@ const ExtractedText = ({ item }) => {
         return (
           <div className="extracted-text__flex-grid" key={field.value}>
             <div className="extracted-text__col-field">
-              <span className="has-text-grey has-text-weight-bold">
+              <span className="has-text-weight-bold">
                 {field.display_name}
               </span>
             </div>
