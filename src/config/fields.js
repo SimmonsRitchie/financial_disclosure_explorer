@@ -1,7 +1,5 @@
 /* Defines what fields in our data can be searched and how they can be searched*/
 
-//TODO: Create fields array specifying what fields to search or display
-
 export const FIELDS = [
   {
     display_name: "Filing year",

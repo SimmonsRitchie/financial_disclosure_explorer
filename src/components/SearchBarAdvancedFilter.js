@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { SEARCH_FIELDS } from "../config/searchSettings";
+import { SEARCH_FIELDS } from "../config/fields";
 import { SearchResultsContext } from "../context/SearchResultsContext";
 
 const SearchBarAdvancedFilter = props => {
@@ -25,7 +25,7 @@ const SearchBarAdvancedFilter = props => {
             >
               {SEARCH_FIELDS.map(item => (
                 <option key={item.value} value={item.value}>
-                  {item.display}
+                  {item.display_name}
                 </option>
               ))}
             </select>

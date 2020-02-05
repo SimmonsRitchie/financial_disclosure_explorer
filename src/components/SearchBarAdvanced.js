@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { SearchResultsContext } from "../context/SearchResultsContext";
 import SearchBarAdvancedFilter from "./SearchBarAdvancedFilter";
 import uuid from 'uuid/v1'
-import {SEARCH_FIELDS} from "../config/searchSettings"
+import {SEARCH_FIELDS} from "../config/fields"
 
 const DEFAULT_SEARCH_FILTER = {field: SEARCH_FIELDS[0].value, condition: 'contains', keywords:'', inputType: SEARCH_FIELDS[0].inputType}
 // TODO: Maybe add inputType here to search filter fields.
