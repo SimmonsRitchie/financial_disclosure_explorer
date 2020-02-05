@@ -12,7 +12,8 @@ const SearchResultsItem = (props) => {
     q01_first_name,
     q01_middle_name,
     q01_last_name,
-    q04_public_position,
+    q03_status,
+    q04_state_or_local,
     q07_filing_year,
     snippet
   } = props.item;
@@ -43,7 +44,7 @@ const SearchResultsItem = (props) => {
       <div className="results-item__container-header" onClick={handleClick}>
         <div>
           <div className="has-text-weight-bold is-size-5">{q01_first_name} {q01_middle_name && `${q01_middle_name[0]}.`} {q01_last_name}</div>
-          <div className="is-size-6">Filing year: {q07_filing_year}, Filing as: {q04_public_position}</div>
+          <div className="is-size-6">Filing year: {q07_filing_year}, Filing as: {q03_status}, {q04_state_or_local}</div>
           {highlight && <div className="results-item__preview" ><span className="is-size-6 is-italic">...{highlight}...</span></div>}
         </div>
         <div >{expandText}</div>
