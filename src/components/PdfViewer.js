@@ -6,7 +6,7 @@ import COSTA from "../data/pdfs/PA-COSTA-JR-JAY.pdf";
 
 const PdfViewer = ({ pdfPath }) => {
   // Use testing pdf in development to avoid CORS issues
-  let displayPdf;
+  let displayPdf
   if (process.env.NODE_ENV === "development") {
     console.log("dev mode: using testing PDF path");
     displayPdf = COSTA;
