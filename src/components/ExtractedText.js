@@ -6,11 +6,11 @@ const ExtractedText = ({ item }) => {
   console.log(DISPLAY_FIELDS);
 
   return (
-    <div>
+    <div className="extracted-text__container">
         {DISPLAY_FIELDS.map(field => (
-          <div key={field.value}>
-            <div><span className="has-text-black-bis">{field.display_name}</span></div>
-            <div><span className="has-text-grey">{item[field.value]}</span></div>
+          <div className="extracted-text__flex-grid" key={field.value}>
+            <div className="extracted-text__col-field"><span className="has-text-grey has-text-weight-bold">{field.display_name}</span></div>
+            <div className="extracted-text__col-item">{item[field.value] ? <span className="has-text-grey-dark">{item[field.value]}</span> : <span className="has-text-grey-light">No data</span>}</div>
           </div>
         ))}
     </div>

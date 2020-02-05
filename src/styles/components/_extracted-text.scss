@@ -1,0 +1,33 @@
+.extracted-text__container {
+  padding: 0 $xs-size
+}
+
+.extracted-text__flex-grid {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: $xs-size;
+
+  @media (max-width: 500px) {
+      display: block;
+  }
+}
+
+.extracted-text__col-field {
+  width: 35%;
+  overflow-wrap: break-word;
+
+
+  @media (max-width: 500px) {
+    width: 100%
+  }
+}
+
+.extracted-text__col-item {
+  width: 64%;
+  overflow-wrap: break-word;
+
+
+  @media (max-width: 500px) {
+    width: 100%
+  }
+}
