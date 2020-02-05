@@ -1,5 +1,5 @@
 import React from "react";
-import { DISPLAY_FIELDS } from "../config/searchSettings";
+import { DISPLAY_FIELDS } from "../config/fields";
 
 const ExtractedText = ({ item }) => {
   console.log("ITEM", item);
