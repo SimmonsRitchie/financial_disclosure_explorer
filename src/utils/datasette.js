@@ -32,6 +32,46 @@ where extracted_fts match escape_fts(:search) || "*"
   return url;
 };
 
+export const advancedSearchUrl = searchArray => {
+  /* [
+  {field: "q01_last_name", condition: "contains", keywords: "sdfsdf", inputType: "text", id: "3aa223b0-4866-11ea-bc68-db580eb89c80"}
+  {field: "q02_city", condition: "contains", keywords: "sdfsdf", inputType: "text", id: "3bc2fd00-4866-11ea-bc68-db580eb89c80"}
+  {field: "q02_city", condition: "contains", keywords: "sdfsdf", inputType: "text", id: "3c5b9380-4866-11ea-bc68-db580eb89c80"}
+  ]
+ */
+  console.log(searchArray)
+  let whereStatement = ""
+  let params = ""
+  searchArray.forEach((item, idx) => {
+    let sqlCondition
+    switch(item.condition) {
+      case 'contains':
+        sqlCondition = 'like'
+        break;
+      case 'excludes':
+        sqlCondition = 'not in'
+    }
+    whereStatement = whereStatement + ` "${item.field}" ${sqlCondition} :p${idx}`
+    params = params + `&p${idx}=%${item.keywords}%`
+    if (idx + 1 < searchArray.length ) {
+      whereStatement = `${whereStatement} and`
+    }
+  });
+
+  //select rowid, * from extracted where  q01_first_name like sefd
+
+  // Construct sql
+  const sql = `select * from extracted where${whereStatement}`
+  console.log(sql)
+
+  // Construct the API URL, using encodeURIComponent() for the parameters
+  const url =
+    API_URL + "sfi.json?sql=" + encodeURIComponent(sql) + params + `&_shape=array`;
+
+  console.log(url);
+  return url;
+};
+
 export const allRowsUrl = () => {
   // Embed the SQL query in a multi-line backtick string:
   const sql = `select rowid, * from extracted order by rowid`;

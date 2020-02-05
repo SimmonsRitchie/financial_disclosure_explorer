@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import { naturalSort } from "../utils/sort";
-import { datasetteFetch, quickSearchUrl } from "../utils/datasette";
+import { datasetteFetch, quickSearchUrl, advancedSearchUrl } from "../utils/datasette";
 import { cleanText } from "../utils/clean"
 
 export const SearchResultsContext = createContext();
@@ -32,6 +32,7 @@ const SearchResultsContextProvider = props => {
 
   const updateSearchResultsAdvanced = (searchArray) => {
     //TODO: Connect with backend
+    const url = advancedSearchUrl(searchArray)
   };
 
   const getUniqueFieldVals = field => {
