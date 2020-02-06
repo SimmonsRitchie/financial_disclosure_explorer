@@ -29,8 +29,8 @@ const SearchResults = (props) => {
     <section className="container__section">
       <SearchResultsDetails itemsOnPage={slicedData.length} totalItems={results ? results.length : 0}/>
       <div className="container">
-        {slicedData.length ? slicedData.map((item, idx) => {
-          return <SearchResultsItem key={item.rowid} item={item} />;
+        {slicedData.length ? slicedData.map((item) => {
+          return <SearchResultsItem key={item.meta_id} item={item} />;
         }) : <div>No records to display</div>}
       </div>
       <section className="section">
