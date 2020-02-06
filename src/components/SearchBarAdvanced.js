@@ -53,7 +53,9 @@ const SearchBarAdvanced = () => {
   }
 
   const removeFilter = (id) => {
-    setSearchFilters(searchFilters.filter(filter => filter.id !== id))
+    const newArray = searchFilters.filter(filter => filter.id !== id)
+    setSearchFilters(newArray)
+    handleAdvancedSearch(newArray)
   }
 
   const disableRemove = searchFilters.length < 2
