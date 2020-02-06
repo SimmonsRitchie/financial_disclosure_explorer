@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { SearchResultsContext } from "../context/SearchResultsContext";
+import { SearchContext } from "../context/SearchContext"
 import SearchBarAdvancedFilter from "./SearchBarAdvancedFilter";
 import uuid from 'uuid/v1'
 import {SEARCH_FIELDS} from "../config/fields"
@@ -10,6 +11,7 @@ const MAX_FILTERS = 5
 
 const SearchBarAdvanced = () => {
   const { handleAdvancedSearch } = useContext(SearchResultsContext);
+  const { addSearchText } = useContext(SearchContext)
   const [searchFilters, setSearchFilters] = useState([
     {...DEFAULT_SEARCH_FILTER, id: uuid()},
   ])
@@ -43,19 +45,23 @@ const SearchBarAdvanced = () => {
       updatedObj,
       ...searchFilters.slice(objIndex + 1),
     ];
-    setSearchFilters(updatedArray)
-    handleAdvancedSearch(updatedArray)
+    updateSearchResults(updatedArray)
   }
 
   const addFilter = () => {
-    const newArray = [...searchFilters, {...DEFAULT_SEARCH_FILTER, id: uuid()}]
-    setSearchFilters(newArray)
+    const updatedArray = [...searchFilters, {...DEFAULT_SEARCH_FILTER, id: uuid()}]
+    setSearchFilters(updatedArray)
   }
 
   const removeFilter = (id) => {
-    const newArray = searchFilters.filter(filter => filter.id !== id)
-    setSearchFilters(newArray)
-    handleAdvancedSearch(newArray)
+    const updatedArray = searchFilters.filter(filter => filter.id !== id)
+    updateSearchResults(updatedArray)
+  }
+
+  const updateSearchResults = (array) => {
+    addSearchText(array.join(", "))
+    setSearchFilters(array)
+    handleAdvancedSearch(array)
   }
 
   const disableRemove = searchFilters.length < 2
