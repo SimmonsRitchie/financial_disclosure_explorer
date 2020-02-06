@@ -45,12 +45,10 @@ const SearchResultsContextProvider = props => {
     });
   };
 
-
-
   const getUniqueFieldVals = field => {
     const arr = props.data.map(item => item[field]);
     const sortedArr = naturalSort(arr);
-    return [...new Set(sortedArr)];
+    return [null, ...new Set(sortedArr)];
   };
 
   return (
