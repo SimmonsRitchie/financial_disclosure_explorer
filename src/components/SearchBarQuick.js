@@ -5,7 +5,7 @@ import { useDebounce } from "../hooks/debounce";
 
 const SearchBarQuick = () => {
   const { addSearchText } = useContext(SearchContext);
-  const { updateSearchResults, loadAllResults } = useContext(SearchResultsContext);
+  const { handleQuickSearch, loadAllResults } = useContext(SearchResultsContext);
   const [text, setText] = useState("");
 
   // state for debounce
@@ -24,7 +24,7 @@ const SearchBarQuick = () => {
   useEffect(
     () => {
       if (debouncedSearchTerm) {
-        updateSearchResults(debouncedSearchTerm);
+        handleQuickSearch(debouncedSearchTerm);
         addSearchText(debouncedSearchTerm);
       } else {
         loadAllResults()

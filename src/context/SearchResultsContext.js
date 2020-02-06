@@ -1,39 +1,53 @@
 import React, { createContext, useState } from "react";
 import { naturalSort } from "../utils/sort";
-import { datasetteFetch, quickSearchUrl, advancedSearchUrl } from "../utils/datasette";
-import { cleanText } from "../utils/clean"
+import {
+  datasetteFetch,
+  quickSearchUrl,
+  advancedSearchUrl
+} from "../utils/datasette";
+import { cleanText } from "../utils/clean";
 
 export const SearchResultsContext = createContext();
-
 
 const SearchResultsContextProvider = props => {
   const [results, setResults] = useState(props.data);
 
   const loadAllResults = () => {
     setResults(props.data);
-  }
+  };
 
-  const updateSearchResults = (searchText) => {
+  const handleQuickSearch = searchText => {
     if (!searchText) {
       loadAllResults();
     } else {
       // remove chars that will cause sql errors
       const cleanSearchText = cleanText(searchText);
       const url = quickSearchUrl(cleanSearchText);
-      datasetteFetch(url).then(fetchedData => {
-        if (!fetchedData) {
-          return;
-        }
-        console.log("FETCHED DATA:", fetchedData);
-        setResults(fetchedData);
-      });
+      updateSearchResults(url);
     }
   };
 
-  const updateSearchResultsAdvanced = (searchArray) => {
+  const handleAdvancedSearch = searchArray => {
     //TODO: Connect with backend
-    const url = advancedSearchUrl(searchArray)
+    if (searchArray.length === 0) {
+      loadAllResults();
+    } else {
+      const url = advancedSearchUrl(searchArray);
+      updateSearchResults(url);
+    }
   };
+
+  const updateSearchResults = url => {
+    datasetteFetch(url).then(fetchedData => {
+      if (!fetchedData) {
+        return;
+      }
+      console.log("FETCHED DATA:", fetchedData);
+      setResults(fetchedData);
+    });
+  };
+
+
 
   const getUniqueFieldVals = field => {
     const arr = props.data.map(item => item[field]);
@@ -45,8 +59,8 @@ const SearchResultsContextProvider = props => {
     <SearchResultsContext.Provider
       value={{
         results,
-        updateSearchResults,
-        updateSearchResultsAdvanced,
+        handleQuickSearch,
+        handleAdvancedSearch,
         getUniqueFieldVals,
         loadAllResults
       }}

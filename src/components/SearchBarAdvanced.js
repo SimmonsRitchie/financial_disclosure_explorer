@@ -9,7 +9,7 @@ const DEFAULT_SEARCH_FILTER = {field: SEARCH_FIELDS[0].value, condition: 'contai
 const MAX_FILTERS = 5
 
 const SearchBarAdvanced = () => {
-  const { updateSearchResultsAdvanced } = useContext(SearchResultsContext);
+  const { handleAdvancedSearch } = useContext(SearchResultsContext);
   const [searchFilters, setSearchFilters] = useState([
     {...DEFAULT_SEARCH_FILTER, id: uuid()},
   ])
@@ -44,7 +44,7 @@ const SearchBarAdvanced = () => {
       ...searchFilters.slice(objIndex + 1),
     ];
     setSearchFilters(updatedArray)
-    updateSearchResultsAdvanced(updatedArray)
+    handleAdvancedSearch(updatedArray)
   }
 
   const addFilter = () => {
