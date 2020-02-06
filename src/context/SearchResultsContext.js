@@ -20,15 +20,13 @@ const SearchResultsContextProvider = props => {
     if (!searchText) {
       loadAllResults();
     } else {
-      // remove chars that will cause sql errors
-      const cleanSearchText = cleanText(searchText);
+      const cleanSearchText = cleanText(searchText); //remove chars that might cause trouble
       const url = quickSearchUrl(cleanSearchText);
       updateSearchResults(url);
     }
   };
 
   const handleAdvancedSearch = searchArray => {
-    //TODO: Connect with backend
     if (searchArray.length === 0) {
       loadAllResults();
     } else {
