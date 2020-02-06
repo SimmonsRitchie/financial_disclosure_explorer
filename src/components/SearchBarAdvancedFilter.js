@@ -41,6 +41,7 @@ const SearchBarAdvancedFilter = props => {
               onChange={handleInputChange}
             >
               <option value="contains">Contains</option>
+              <option value="starts_with">Starts with</option>
               <option value="excludes">Excludes</option>
             </select>
           </span>
