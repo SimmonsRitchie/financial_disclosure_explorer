@@ -98,7 +98,7 @@
     "display": true
   },
   {
-    "display_name": "Occupation/profession",
+    "display_name": "Occupation/proffession",
     "value": "q06_occupation",
     "inputType": "text",
     "search": true,
