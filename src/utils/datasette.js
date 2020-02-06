@@ -51,7 +51,7 @@ export const advancedSearchUrl = searchArray => {
       case 'excludes':
         sqlCondition = 'not in'
     }
-    whereStatement = whereStatement + ` "${item.field}" ${sqlCondition} :p${idx}`
+    whereStatement = whereStatement + ` "${item.field}" ${sqlCondition} (:p${idx})`
     params = params + `&p${idx}=` + encodeURIComponent(`%${item.keywords}%`)
     if (idx + 1 < searchArray.length ) {
       whereStatement = `${whereStatement} and`
