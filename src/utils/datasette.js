@@ -1,10 +1,11 @@
 import { SEARCH_FIELDS } from "../config/fields";
+import FIELDS from "../config/fields.json"
 
 // Get all the search fields we want to search
-let formattedSearchFields = SEARCH_FIELDS.map(
+let formattedFields = FIELDS.map(
   item => `extracted.${item.value}`
 );
-formattedSearchFields = formattedSearchFields.join(", ");
+formattedFields = formattedFields.join(", ");
 
 // API URL
 const API_URL = process.env.DATASETTE_URL;
@@ -13,7 +14,7 @@ export const quickSearchUrl = searchValue => {
   // Embed the SQL query in a multi-line backtick string:
   const sql = `select
   extracted.rowid, snippet(extracted_fts, -1, 'b4de2a49c8', '8c94a2ed4b', '...', 100) as snippet,
-  extracted_fts.rank, ${formattedSearchFields}
+  extracted_fts.rank, ${formattedFields}
 from extracted
   join extracted_fts on extracted.rowid = extracted_fts.rowid
 where extracted_fts match escape_fts(:search) || "*"
@@ -44,15 +45,24 @@ export const advancedSearchUrl = searchArray => {
   let params = ""
   searchArray.forEach((item, idx) => {
     let sqlCondition
+    let keywords = item.keywords
+    console.log(item.condition)
     switch(item.condition) {
       case 'contains':
         sqlCondition = 'like'
+        keywords = `%${item.keywords}%`
+        break;
+      case 'starts_with':
+        sqlCondition = 'like'
+        keywords = `${item.keywords}%`
         break;
       case 'excludes':
         sqlCondition = 'not in'
+        break;
     }
+    console.log(sqlCondition)
     whereStatement = whereStatement + ` "${item.field}" ${sqlCondition} (:p${idx})`
-    params = params + `&p${idx}=` + encodeURIComponent(`%${item.keywords}%`)
+    params = params + `&p${idx}=` + encodeURIComponent(keywords)
     if (idx + 1 < searchArray.length ) {
       whereStatement = `${whereStatement} and`
     }
