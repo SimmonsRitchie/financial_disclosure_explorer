@@ -56,6 +56,10 @@ export const advancedSearchUrl = searchArray => {
         sqlCondition = 'like'
         keywords = `${item.keywords}%`
         break;
+      case 'ends_with':
+        sqlCondition = 'like'
+        keywords = `%${item.keywords}`
+        break;
       case 'excludes':
         sqlCondition = 'not in'
         break;

@@ -42,6 +42,7 @@ const SearchBarAdvancedFilter = props => {
             >
               <option value="contains">Contains</option>
               <option value="starts_with">Starts with</option>
+              <option value="ends_with">Ends with</option>
               <option value="excludes">Excludes</option>
             </select>
           </span>
