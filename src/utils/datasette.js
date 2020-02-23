@@ -1,4 +1,3 @@
-import { SEARCH_FIELDS } from "../config/fields";
 import FIELDS from "../config/fields.json"
 
 // Get all the search fields we want to search
@@ -8,6 +7,7 @@ let formattedFields = FIELDS.map(
 formattedFields = formattedFields.join(", ");
 
 // API URL
+// Get fetch URL from env variable
 const API_URL = process.env.DATASETTE_URL;
 
 export const quickSearchUrl = searchValue => {
