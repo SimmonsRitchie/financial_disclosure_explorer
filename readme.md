@@ -1,9 +1,11 @@
-### Pa. Financial Disclosure Explorer
+### Pa. Financial Disclosure Explorer (beta)
 A searchable portal of statements of financial interest filed by Pennsylvania officials built with React.
 
 This is a joint project between Spotlight PA and Temple University.
 
 It uses [parcel.js](https://github.com/parcel-bundler/parcel) to bundle the source files.
+
+NOTE: this app is still in beta and is currently using dummy data.
 
 ### Install
 
