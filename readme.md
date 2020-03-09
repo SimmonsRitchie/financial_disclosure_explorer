@@ -1,5 +1,5 @@
 ### Pa. Financial Disclosure Explorer (beta)
-A searchable portal of statements of financial interest filed by Pennsylvania officials built with React.
+A searchable portal for statements of financial interest filed by Pennsylvania officials built with React.
 
 View: [live project](https://interactives.data.spotlightpa.org/2020/financial-dislosure-explorer/).
 
